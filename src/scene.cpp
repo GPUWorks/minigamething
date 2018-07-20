@@ -46,11 +46,9 @@ Scene::~Scene()
 
 void Scene::rootUpdate()
 {
-    if (runtime() - lastTick >= TICKTIME) {
-        tick(runtime() - lastTick);
-        lastTick = runtime();
-    }
 
+    tick(runtime()-lastTick);
+    lastTick = runtime();
     render();
 
     // delete all marked stuff
@@ -60,6 +58,8 @@ void Scene::rootUpdate()
             _objects[i] = NULL;
         }
     }
+
+    Sleep(3);
 }
 
 void Scene::tick(double ticktime)
